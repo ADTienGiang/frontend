@@ -12,13 +12,13 @@ const Loai=()=>{
     }, []);
 
     const getthuonghieu = async () => {
-    const response = await axios.get("http://localhost:8000/thuonghieu");
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}thuonghieu`);
     setthuonghieu(response.data);
     };
     // 
     const deleteThuonghieu = async (loaiID) => {
         try {
-          await axios.delete(`http://localhost:8000/thuonghieu/${loaiID}`);
+          await axios.delete(`${process.env.REACT_APP_BACKEND_URL}thuonghieu/${loaiID}`);
           getthuonghieu();
         } catch (error) {
           console.log(error);

@@ -9,7 +9,7 @@ const ThemLoai = () => {
   const saveLoai = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/loai", { tenloai });
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}loai`, { tenloai });
       navigate("/admin/loai");
     } catch (error) {
       console.log(error);

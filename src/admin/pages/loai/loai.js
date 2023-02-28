@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import adminLayout from "../../hoc/adminLayout";
-
+import dotenv from 'dotenv'
+dotenv.config()
 const Loai=()=>{
     // lấy loại
     const [loai, setloai] = useState([]);
@@ -12,13 +13,13 @@ const Loai=()=>{
     }, []);
 
     const getloai = async () => {
-    const response = await axios.get("http://localhost:8000/loai");
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}loai`);
     setloai(response.data);
     };
     // 
     const deleteLoai = async (loaiID) => {
         try {
-          await axios.delete(`http://localhost:8000/loai/${loaiID}`);
+          await axios.delete(`${process.env.REACT_APP_BACKEND_URL}loai/${loaiID}`);
           getloai();
         } catch (error) {
           console.log(error);

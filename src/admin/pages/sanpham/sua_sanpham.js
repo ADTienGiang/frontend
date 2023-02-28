@@ -21,11 +21,11 @@ const EditProduct = () => {
 
   useEffect(() => {
     const fetchLoai = async () => {
-      const response = await axios.get("http://localhost:8000/loai");
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}loai`);
       setListLoai(response.data);
     };
     const fetchThuongHieu = async () => {
-      const response = await axios.get("http://localhost:8000/thuonghieu");
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}thuonghieu`);
       setListThuongHieu(response.data);
     };
 
@@ -38,7 +38,7 @@ const EditProduct = () => {
     fetchProduct();
   }, []);
     const fetchProduct = async () => {
-      const response = await axios.get(`http://localhost:8000/sanpham/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}sanpham/${id}`);
       const data = response.data;
       setTen(data.ten);
       setGioitinh(data.gioitinh);
@@ -74,7 +74,7 @@ const EditProduct = () => {
     formData.append("thuonghieuId", thuonghieuId);
 
     try {
-      await axios.patch(`http://localhost:8000/sanpham/${id}`, formData, {
+      await axios.patch(`${process.env.REACT_APP_BACKEND_URL}sanpham/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

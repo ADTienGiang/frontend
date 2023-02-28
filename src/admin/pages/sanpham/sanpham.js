@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import adminLayout from "../../hoc/adminLayout";
-
+import dotenv from 'dotenv'
+dotenv.config()
   const SanPham = () => {
     const [sanpham, setSanpham] = useState([]);
 
@@ -11,13 +12,13 @@ import adminLayout from "../../hoc/adminLayout";
     }, []);
 
     const getSanpham = async () => {
-      const response = await axios.get("http://localhost:8000/sanpham");
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}sanpham`);
       setSanpham(response.data);
     };
 
     const deleteSanpham = async (sanphamID) => {
       try {
-        await axios.delete(`http://localhost:8000/sanpham/${sanphamID}`);
+        await axios.delete(`${process.env.REACT_APP_BACKEND_URL}sanpham/${sanphamID}`);
         getSanpham();
       } catch (error) {
         console.log(error);

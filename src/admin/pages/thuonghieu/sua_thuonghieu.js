@@ -12,14 +12,14 @@ const Editthuonghieu = () => {
   }, []);
 
   const getLoaiById = async () => {
-    const response = await axios.get(`http://localhost:8000/thuonghieu/${id}`);
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}thuonghieu/${id}`);
     setthuonghieu(response.data.tenhieu);
   };
 
   const updateLoai = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:8000/thuonghieu/${id}`, {
+      await axios.patch(`${process.env.REACT_APP_BACKEND_URL}thuonghieu/${id}`, {
         tenhieu,
       });
       navigate("/admin/thuonghieu");

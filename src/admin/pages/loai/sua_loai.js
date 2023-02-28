@@ -12,14 +12,14 @@ const EditLoai = () => {
   }, []);
 
   const getLoaiById = async () => {
-    const response = await axios.get(`http://localhost:8000/loai/${id}`);
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}loai/${id}`);
     settenloai(response.data.tenloai);
   };
 
   const updateLoai = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:8000/loai/${id}`, {
+      await axios.patch(`${process.env.REACT_APP_BACKEND_URL}loai/${id}`, {
         tenloai,
       });
       navigate("/admin/loai");

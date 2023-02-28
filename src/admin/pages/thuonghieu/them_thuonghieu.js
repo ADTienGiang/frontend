@@ -9,7 +9,7 @@ const ThemThuonghieu = () => {
   const saveThuonghieu = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/thuonghieu", { tenhieu });
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}thuonghieu`, { tenhieu });
       navigate("/admin/thuonghieu");
     } catch (error) {
       console.log(error);
