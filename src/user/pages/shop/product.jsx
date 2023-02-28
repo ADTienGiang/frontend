@@ -10,7 +10,7 @@ export const Product = () => {
   }, []);
 
   const getSanpham = async () => {
-    const response = await axios.get("http://localhost:8000/sanpham");
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}sanpham`);
     setSanpham(response.data);
   };
 
