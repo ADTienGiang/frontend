@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { ShopContext } from "../../context/shop-context";
 import axios from "axios";
-
+import dotenv from 'dotenv'
+dotenv.config()
 export const Product = () => {
   const [sanpham, setSanpham] = useState([]);
   useEffect(() => {
