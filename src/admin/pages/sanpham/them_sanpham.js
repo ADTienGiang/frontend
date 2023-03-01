@@ -60,7 +60,7 @@ const AddProduct = () => {
     formData.append("loaiId", loaiId);
     formData.append("thuonghieuId", thuonghieuId);
     try {
-      await axios.post("${process.env.REACT_APP_BACKEND_URL}sanpham", formData, {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}sanpham`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
         },

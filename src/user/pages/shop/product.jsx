@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { ShopContext } from "../../context/shop-context";
 import axios from "axios";
-import dotenv from 'dotenv'
-dotenv.config()
+
 export const Product = () => {
   const [sanpham, setSanpham] = useState([]);
   useEffect(() => {
@@ -25,7 +24,7 @@ export const Product = () => {
     sanpham.map((item)=> (
     <div className="product">
       
-      <img src={item.url  } />
+      <img src={`${process.env.REACT_APP_BACKEND_URL}/images/${item.hinhanh}`} alt="Image" style={{ width: '400px', height: '280px' }} />
       <div className="description">
         <p>
           <b>{item.ten}</b>
