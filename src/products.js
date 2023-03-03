@@ -14,4 +14,5 @@ export const PRODUCTS = [
     price: 999.0,
     productImage: product1,
   },
+
 ];

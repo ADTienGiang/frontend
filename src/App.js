@@ -2,6 +2,7 @@ import "./App.css";
 import React from 'react';
 import 'font-awesome/css/font-awesome.min.css';
 import './admin/assets/css/app.css';
+import { useHistory } from "react-router-dom";
 import TypographyPage from './admin/pages/TypographyPage'
 import LoginPage from './admin/pages/auth/LoginPage'
 import ResetPassword from './admin/pages/auth/ResetPassword';
@@ -9,6 +10,9 @@ import ProfilePage from './admin/pages/profile/ProfilePage';
 import ChangePasswordPage from './admin/pages/profile/ChangePasswordPage';
 import UserPreferencesPage from './admin/pages/profile/UserPreferencesPage'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+
+
+// đăng nhập 
 
 import Sanpham from './admin/pages/sanpham/sanpham';
 import ThemSanpham from "./admin/pages/sanpham/them_sanpham";
@@ -28,6 +32,9 @@ import { Shop } from "./user/pages/shop/shop";
 import { Contact } from "./user/pages/contact";
 import { Cart } from "./user/pages/cart/cart";
 import { ShopContextProvider } from "./user/context/shop-context";
+import LoginAdmin from "./admin/pages/auth/LoginPage";
+
+
 function App() {
   return (
 

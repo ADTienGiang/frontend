@@ -1,31 +1,82 @@
-.divider:after,
-.divider:before {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: #eee;
-}
-.h-custom {
-  height: calc(100% - 73px);
-}
-@media (max-width: 450px) {
-  .h-custom {
-    height: 100%;
-  }
-}
-
+/* Bố cục trang đăng nhập */
 .login-form {
-  background: #fff;
-  padding: 10px 5%;
-  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Tiêu đề đăng nhập */
 .login-form h1 {
-  font-size: 30px !important;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-.reset-password-section {
+/* Mô tả đăng nhập */
+.login-form p {
+  font-size: 18px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* Địa chỉ email và mật khẩu */
+.login-form label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
   background-color: #fff;
-  padding: 15px 5%;
-  border-radius: var(--border-radius);
+  font-size: 18px;
+  color: #333;
+}
+
+/* Checkbox và quên mật khẩu */
+.login-form .form-check {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.login-form .form-check label {
+  font-weight: normal;
+}
+
+.login-form .text-body {
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Nút đăng nhập */
+.login-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: #5f5fff;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button[type="submit"]:hover {
+  background-color: #333;
 }
