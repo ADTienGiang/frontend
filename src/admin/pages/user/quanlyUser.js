@@ -1,30 +1,47 @@
+
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
 import adminLayout from "../../hoc/adminLayout";
 import dotenv from 'dotenv'
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 dotenv.config()
-  const SanPham = () => {
-    const [sanpham, setSanpham] = useState([]);
+  const khachhang = () => {
+    const [khachhang, setCustomer] = useState([]);
 
     useEffect(() => {
-      getSanpham();
+        getCustomer();
     }, []);
 
-    const getSanpham = async () => {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}sanpham`);
-      setSanpham(response.data);
+    const getCustomer = async () => {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}users/custumer`);
+      setCustomer(response.data);
     };
 
     const deleteSanpham = async (sanphamID) => {
       try {
-        await axios.delete(`${process.env.REACT_APP_BACKEND_URL}sanpham/${sanphamID}`);
-        getSanpham();
+        confirmAlert({
+            title: 'Xác nhận xóa ?',
+            message: 'Bạn có chắc chắn muốn xóa',
+            buttons: [
+              {
+                label: 'Có',
+                onClick: async() => {
+                    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}users/custumer/${sanphamID}`);
+             getCustomer();
+                }
+              },
+              {
+                label: 'Không',
+                
+              }
+            ]
+          });
       } catch (error) {
         console.log(error);
       }
-    };
-
+    };    
 
   return  <>
       <div className="table-container">
@@ -54,68 +71,29 @@ dotenv.config()
           <table className="table">
             <thead>
               <tr>
-                <th>
-                  <input type="checkbox" />
-                </th>
-                <th>Mã sản phẩm</th>
-                <th>Tên sản phẩm</th>
-                <th>Giới tính</th>
-                <th>Kích cỡ</th>
-                <th>Màu sắc</th>
-                <th>Chất liệu</th>
-                <th>Hình ảnh</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
-                <th>Loại</th>
-                <th>Thương hiệu</th>
-                <th></th>
+                <th>id</th>
+                <th>Email</th>
+                <th>Name </th>
+                <th>Phone</th>
+                <th>address</th>
+                <th>action</th>
+                
               </tr>
             </thead>
             <tbody>
-              {sanpham.map((sp) => (
+              {khachhang.map((sp) => (
                 <tr key={sp.id}>
-                  <td>
-                    <input type="checkbox" />
-                  </td>
+                  
                   <td>{sp.id}</td>
-                  <td>{sp.ten}</td>
-                  <td>{sp.gioitinh}</td>
-                  <td>{sp.kichco}</td>
-                  <td>{sp.mau}</td>
-                  <td>{sp.chatlieu}</td>
-                  <td>
-                  <figure >
-                  <img src={sp.url} alt="1"style={{ width: '130px', height: '100px' }} />
-                </figure>
-                  </td>
-                  <td>{sp.gia}</td>
-                  <td>{sp.soluong}</td>
-                  <td>{sp.loai.tenloai}</td>
-                  <td>{sp.thuongHieu.tenhieu  }</td>
+                  <td>{sp.email}</td>
+                  <td>{sp.name}</td>
+                  <td>{sp.address}</td>
+                  <td>{sp.phone}</td>
                   <td>
                   <div className="dropdown table-action-dropdown">
-                    <button
-                        className="btn btn-secondary btn-sm dropdown-toggle"
-                        type="button"
-                        id="dropdownMenuButtonSM"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
-                    </button>
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButtonSM">
-                        <li>
-                        <Link to={`sua/${sp.id}`} className="dropdown-item">
-                            <i className="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit
-                        </Link>
-                        </li>
-                        <div className="dropdown-divider"></div>
-                        <li>
                         <Link  onClick={() => deleteSanpham(sp.id)} className="dropdown-item text-danger">
                             <i className="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete
                         </Link>
-                        </li>
-                    </ul>
                     </div>
                                 </td>
                             </tr>
@@ -151,4 +129,5 @@ dotenv.config()
             </div>
         </>
 }
-export default adminLayout(SanPham);
+
+export default adminLayout(khachhang);

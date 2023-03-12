@@ -36,8 +36,8 @@ class Sidebar extends React.Component {
                     </li>
                     <li className="border-top my-3"></li>
                     <li className="mb-1">
-                        <Link tag="a" className="" to="/admin/typography">
-                        <i className="fa fa-text-width" aria-hidden="true"></i> Typography
+                        <Link tag="a" className="" to="/admin/quanlyuser">
+                        <i className="fa fa-text-width" aria-hidden="true"></i> Quản lý user
                         </Link>
                     </li>
                     
@@ -59,17 +59,13 @@ class Sidebar extends React.Component {
                    
                 </ul>
             </PerfectScrollbar>
-            <div className="dropdown fixed-bottom-dropdown">
-                <a href="#" className="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://via.placeholder.com/50" alt="" width="32" height="32" className="rounded-circle me-2" />
-                    <span>ADMIN</span>
-                </a>
+            {/* <div className="dropdown fixed-bottom-dropdown">
                 <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                     <li><Link className="dropdown-item" to="/profile"><i className="fa fa-user-circle" aria-hidden="true"></i> Profile</Link></li>
                     <li><hr className="dropdown-divider" /></li>
                     <li><Link className="dropdown-item" to="/login"><i className="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</Link></li>
                 </ul>
-            </div>
+            </div> */}
         </div>
     }
 }

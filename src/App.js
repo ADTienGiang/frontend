@@ -1,18 +1,13 @@
-import "./App.css";
-import React from 'react';
+import React from "react";
 import 'font-awesome/css/font-awesome.min.css';
 import './admin/assets/css/app.css';
-import { useHistory } from "react-router-dom";
-import TypographyPage from './admin/pages/TypographyPage'
+import QuanlyUser from './admin/pages/user/quanlyUser'
 import LoginPage from './admin/pages/auth/LoginPage'
 import ResetPassword from './admin/pages/auth/ResetPassword';
 import ProfilePage from './admin/pages/profile/ProfilePage';
 import ChangePasswordPage from './admin/pages/profile/ChangePasswordPage';
 import UserPreferencesPage from './admin/pages/profile/UserPreferencesPage'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-
-
-// đăng nhập 
 
 import Sanpham from './admin/pages/sanpham/sanpham';
 import ThemSanpham from "./admin/pages/sanpham/them_sanpham";
@@ -27,28 +22,33 @@ import AddThuonghieu from "./admin/pages/thuonghieu/them_thuonghieu";
 import SuaThuonghieu from "./admin/pages/thuonghieu/sua_thuonghieu";
 
 
-import { Navbar } from "./user/components/navbar";
 import { Shop } from "./user/pages/shop/shop";
-import { Contact } from "./user/pages/contact";
+import ChiTietSanPham from  "./user/pages/shop/ChiTietSanPham";
 import { Cart } from "./user/pages/cart/cart";
-import { ShopContextProvider } from "./user/context/shop-context";
-import LoginAdmin from "./admin/pages/auth/LoginPage";
-
-
+import AuthContextProvider from "./user/contexts/AuthContext";
+// user
+import Register from "./user/pages/register/register.jsx";
+import Login from "./user/pages/login/login.jsx";
 function App() {
   return (
+    
 
     <Router>
-      {/* đây là của user */}
+      <AuthContextProvider>
       <Routes>
         {/* đây là của user */}
-        <Route path="/" element={<ShopContextProvider><Navbar /><Shop /></ShopContextProvider>} />
-        <Route path="/contact" element={<ShopContextProvider><Navbar /><Contact /></ShopContextProvider>} />
-        <Route path="/cart" element={<ShopContextProvider><Navbar /><Cart /></ShopContextProvider>} />
-        {/* đây là của admin */}
-        <Route path="/admin/*" element={<AdminRoutes />} />
+        <Route exact path="/" element={<Shop />} />
+        <Route exact  path="/sanpham/:id" element={<ChiTietSanPham />} />
+        <Route exact path="/users/giohang" element={<Cart />} />
+        <Route exact  path='/users/register'element={<Register />} />
+        <Route exact path='/users/login'element={<Login/>}/>
       </Routes>
-</Router>
+      </AuthContextProvider>
+      <Routes>
+        {/* đây là của admin */}
+      <Route path="/admin/*" element={<AdminRoutes />} />
+      </Routes>
+  </Router>
   );
 }
 
@@ -72,7 +72,7 @@ function AdminRoutes() {
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/change-password" element={<ChangePasswordPage />} />
       <Route path="/preferences" element={<UserPreferencesPage />} />
-      <Route path="/typography" element={<TypographyPage />} />
+      <Route path="/quanlyuser" element={<QuanlyUser />} />
     </Routes>
   );
 }
